@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <title>{{title}} - EcoTrack</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/gentelella/1.4.0/css/custom.min.css" rel="stylesheet">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <!-- Sidebar -->
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="/" class="site_title">
+              <img src="/images/logo.png" alt="EcoTrack Logo" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
+              <span>EcoTrack</span>
+            </a>
+          </div>
+          <div class="clearfix"></div>
+
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <ul class="nav side-menu">
+              
+  <li class="main">
+    <a href="/">
+      <i class="fa fa-home" style="margin: 10px 0";></i> Registered Devices
+    </a>
+  </li>
+
+  <ul class="nav side-menu" style="padding-left: 40px;">
+                {{#each devices}}
+                <li class="{{this.deviceId}}">
+                  <a title="Device Id: {{this.deviceId}}" href="/{{this.deviceId}}">
+                    <i class="fa fa-plug"></i>
+                    {{this.alias}}
+                  </a>
+                </li>
+                {{else}}
+               <li>
+                  <a href='80060DF5B05C55954A4D8FC5CD7FF54B18AA8A5F'>
+                    <i class="fa fa-plug"></i>
+                    Phone Charger 
+                  </a>
+                </li>
+                {{/each}} 
+              </ul> 
+              <ul class="nav side-menu">
+                <li style="padding-left: 40px;"><a href="/washing-machine"><i class="fa fa-plug"></i>Washing Machine</a></li>
+                <li style="padding-left: 40px;"><a href="/television"><i class="fa fa-plug"></i>Television</a></li>
+                <li><a href="/bills"><i class="fa fa-file"></i> Bills</a></li>
+                <li><a href="/analytics"><i class="fa fa-bar-chart"></i> Analytics</a></li>
+                <li><a href="/insights"><i class="fa fa-lightbulb-o"></i> Insights</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="right_col" role="main">
+        {{{body}}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Footer if Needed -->
+</body>
+
+</html>
+

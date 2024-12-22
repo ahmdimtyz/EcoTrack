@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics</title>
+  <link rel="stylesheet" href="/stylesheets/style-analytics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="analytics-container">
+    <header>
+      <h1>Analytics</h1>
+    </header>
+    
+    <div class="analytics-content">
+      <!-- Current Usage Section -->
+      <div class="current-usage">
+        <h2>Current Usage</h2>
+        <canvas id="current-usage-donut"></canvas>
+        <div class="color-zones">
+          <h4>Color Zones</h4>
+          <ul>
+            <li><span class="zone green"></span> 0-3 kW</li>
+            <li><span class="zone yellow"></span> 3-7 kW</li>
+            <li><span class="zone red"></span> 7-10+ kW</li>
+          </ul>
+        </div>
+        <div class="appliances">
+          <h4>Appliances (kW)</h4>
+          <canvas id="appliances-bar"></canvas>
+        </div>
+      </div>
+
+      <!-- Past Usage Section -->
+      <div class="past-usage">
+        <h2>Past Usage</h2>
+        <canvas id="past-usage-line"></canvas>
+        <h3>Daily Energy Consumption (kWh)</h3>
+        <canvas id="daily-consumption-bar"></canvas>
+        <h3>
+        Current Month (<span id="current-month"></span>) vs Monthly Average (kWh)
+        </h3>
+        <canvas id="month-vs-average-bar"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script 
+    src="/javascripts/analytics.js">
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentMonthElement = document.getElementById("current-month");
+    
+      // Array of month names
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June", "July", 
+        "August", "September", "October", "November", "December"
+      ];
+    
+      // Get the current month index (0-11)
+      const currentMonthIndex = new Date().getMonth();
+    
+      // Set the current month name in the HTML
+      currentMonthElement.textContent = monthNames[currentMonthIndex];
+    });
+    
+  </script>
+</body>
+
+</html>

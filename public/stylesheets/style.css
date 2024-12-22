@@ -1,0 +1,180 @@
+body {
+  background-color: #f8f8f8; /* Set to white or transparent */
+}
+
+.container.body {
+  background-color: #f8f8f8; /* Ensure the main container is white */
+}
+
+/* General Styles */
+.container.body {
+  padding: 0;
+  margin: 0;
+}
+
+.main_container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0px;
+}
+
+.main_container_big {
+  display: flex;
+  flex-direction: center;
+}
+
+/* Fix the Right Column */
+.right_col {
+  background-color: #7e7a7a;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+}
+
+.page-header h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+/* Left Sidebar */
+.left_col {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #7e7a7a;
+  height: 100vh; /* Full height */
+  width: 250px; /* Match with right_col margin */
+  overflow-y: auto;
+  padding-top: 20px; /* Adjust spacing */
+}
+
+.nav_title {
+  text-align: center;
+  background-color: #7e7a7a;
+  padding: 15px 10px;
+  font-size: 16px;
+  color: white;
+}
+
+.nav.side-menu {
+  padding-left: 0;
+}
+
+.nav.side-menu li {
+  list-style: none;
+  margin: 0px 0;
+}
+
+.nav.side-menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.nav.side-menu .device-id {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.nav.side-menu li a:hover {
+  background-color: #575757;
+  color: white;
+}
+
+/* Header Section */
+.page-header {
+  margin: 10px 0 20px;
+}
+
+/* Updated Panels for Information */
+.x_panel {
+  background-color: #eaeaea; /* Matches the soft gray background */
+  border: none; /* Removes border to achieve a cleaner look */
+  padding: 15px;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.x_panel.small {
+  height: unset;
+  padding: 10px;
+}
+
+/* Updated Content Styles */
+.x_content.small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  font-size: 16px; /* Ensure consistency with the bills page */
+}
+
+/* Rows and Columns */
+.row {
+  margin: 0 -10px; /* Reset row padding for consistency */
+}
+
+.col-md-4,
+.col-md-8,
+.col-sm-4,
+.col-sm-8 {
+  padding: 10px; /* Add spacing between columns */
+}
+
+/* Adjustments for Hover Effects (Optional) */
+.x_panel:hover {
+  background-color: #f7f7f7; /* Slightly lighter gray on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+.nav.side-menu .child_menu {
+  margin-left: 20px; /* Adjust indentation */
+  list-style: none; /* Remove bullet points */
+  padding-left: 0;
+}
+
+.nav.side-menu .child_menu li a {
+  font-size: 14px; /* Slightly smaller font for indented items */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+  .right_col {
+    margin-left: 0; /* Remove margin for mobile */
+    padding: 15px; /* Add smaller padding */
+  }
+  .left_col {
+    position: relative; /* Adjust positioning for smaller screens */
+    width: 100%;
+  }
+}
+
+.nav.side-menu > li.active > a {
+  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+  background: #5c5757;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+}
+
+
+.nav.side-menu > li.active,
+.nav.side-menu > li.current-page {
+  border-right: 5px solid;
+}
+
+.nav-md .container.body .right_col{
+  margin-left: 150px;
+  margin-right: 30px;
+}

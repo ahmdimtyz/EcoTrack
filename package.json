@@ -1,0 +1,39 @@
+{
+  "name": "--yes",
+  "version": "1.0.0",
+  "description": "Energy Monitoring Web Application. ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dist": "pkg . --out-path ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmad Imtiyaz & Adam Haikal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "tplink-smarthome-api": "0.22.0",
+    "moment": "2.22.0",
+    "express-ws": "3.0.0",
+    "shelljs": "0.8.3"
+  },
+  "devDependencies": {
+    "pkg": "4.3.1"
+  },
+  "bin": {
+    "tplink-monitor": "./app.js"
+  },
+  "pkg": {
+    "scripts": "node_modules/hbs/lib/hbs.js",
+    "assets": [
+      "views/*",
+      "public/**/*"
+    ]
+  }
+}
+

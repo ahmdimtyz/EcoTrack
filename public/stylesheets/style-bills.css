@@ -1,0 +1,65 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  .bills-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .switch {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 16px;
+    background-color: #d3d3d3;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.active {
+    background-color: #8fcba8;
+    color: #fff;
+  }
+  
+  button:hover {
+    background-color: #8fcba8;
+    color: #fff;
+  }
+  
+  .chart-container {
+    background: #eaeaea;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-container:hover {
+    background-color: #f7f7f7; /* Slightly lighter gray on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+  }
+
+  canvas {
+    width: 100% !important;
+    height: 400px !important;
+  }
+  

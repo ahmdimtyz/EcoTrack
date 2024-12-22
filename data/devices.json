@@ -1,0 +1,14 @@
+[
+  {
+    "deviceId": "1",
+    "alias": "Television",
+    "status": "off",
+    "power": 0
+  },
+  {
+    "deviceId": "2",
+    "alias": "Washing Machine",
+    "status": "on",
+    "power": 500
+  }
+]

@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+.analytics-container {
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  background-color: #f8f8f8; /* Clean white background */
+}
+
+header h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.analytics-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px; /* Spacing between sections */
+}
+
+.current-usage,
+.past-usage {
+  background-color: #eaeaea; /* Light gray background for individual sections */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Comfortable padding inside the boxes */
+  flex: 1 1 calc(50% - 15px); /* Equal width, adjusts dynamically */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  color: #333; /* Text color */
+}
+
+.color-zones ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9em; /* Consistent, smaller font size */
+}
+
+.color-zones li {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.color-zones .zone {
+  display: inline-block;
+  width: 12px; /* Adjust size */
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.zone.green {
+  background-color: #4caf50;
+}
+
+.zone.yellow {
+  background-color: #ffeb3b;
+}
+
+.zone.red {
+  background-color: #f44336;
+}
+
+canvas {
+  max-width: 100%; /* Ensure the canvas fits the container */
+  height: 200px; /* Adjust height for a balanced design */
+}
+
+/* Footer */
+footer ul {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 10px;
+  background-color: #7e7a7a;
+  color: white;
+  text-align: center;
+  border-radius: 0 0 15px 15px; /* Rounded corners to match the container */
+}
+
+/* Headings and Text */
+h3, h5 {
+  margin: 10px 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.list-inline > .active {
+  font-weight: bold;
+}

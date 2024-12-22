@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/stylesheets/style-bills.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="bills-container">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+
+    <!-- Switch for Month/Day View -->
+    <div class="switch">
+      <button id="month-view" class="active">Month</button>
+      <button id="day-view">Day</button>
+    </div>
+
+    <!-- Chart Container -->
+    <div class="chart-container">
+      <canvas id="bills-chart"></canvas>
+    </div>
+  </div>
+
+  <script src="/javascripts/bills.js"></script>
+</body>
+</html>
