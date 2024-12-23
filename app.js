@@ -3,6 +3,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const axios = require('axios');
+
+// Flask API URL
+const FLASK_API_PREDICT_URL = 'http://127.0.0.1:5000/predict';
 
 const app = express();
 const expressWs =  require('express-ws')(app);
@@ -39,6 +43,33 @@ app.get('/washing-machine', (req, res) => {
   res.render('washing-machine', { title: 'Washing Machine' });
 });
 
+// Define /insights route with Flask API integration
+app.get('/insights', async (req, res) => {
+  try {
+    const response = await axios.post(FLASK_API_PREDICT_URL);
+
+    if (!response.data || !response.data.predictions) {
+      throw new Error('Invalid response from Flask API');
+    }
+
+    const { months, predictions, recommendations } = response.data;
+
+    res.render('insights', {
+      title: 'Insights',
+      user: 'User1',
+      months: JSON.stringify(months),
+      graphData: JSON.stringify(predictions),
+      recommendations, // Pass recommendations directly to the frontend
+    });
+  } catch (error) {
+    console.error('Error fetching insight data:', error.message);
+    res.status(500).render('error', {
+      title: 'Error',
+      message: 'Failed to fetch insights.',
+      error: error.message,
+    });
+  }
+});
 
 app.get('/', async (req, res) => {
   try {

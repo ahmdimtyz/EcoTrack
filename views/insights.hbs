@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link href="/stylesheets/style-insight.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <div class="content">
+      
+
+      <!-- Graph Section -->
+      <div class="graph">
+        <h3>Predicted Energy Usage for Next 6 Months</h3>
+        <canvas id="predictionChart" width="400" height="200"></canvas>
+      </div>
+
+      <!-- Recommendations Section -->
+      <div class="recommendations">
+        <h3>Energy-Saving Recommendations</h3>
+        {{#each recommendations}}
+        <div>
+          <h4>Month {{month}}</h4>
+          <p><strong>Air Conditioner:</strong> {{air_conditioner}}</p>
+          <p><strong>Television:</strong> {{television}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const months = {{months}};
+    const graphData = {{graphData}};
+
+    const ctx = document.getElementById('predictionChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months.map(month => `Month ${month}`),
+        datasets: [{
+          label: 'Predicted Usage (kWh)',
+          data: graphData,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2,
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' }
+        },
+        scales: {
+          x: { title: { display: true, text: 'Month' } },
+          y: { title: { display: true, text: 'Predicted Usage (kWh)' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
