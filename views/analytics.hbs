@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +9,22 @@
 </head>
 
 <body>
+  <!-- 📊 Analytics Container -->
   <div class="analytics-container">
+    <!-- 📝 Header Section -->
     <header>
       <h1>Analytics</h1>
     </header>
     
+    <!-- 📊 Analytics Content Section -->
     <div class="analytics-content">
-      <!-- Current Usage Section -->
-      <div class="current-usage">
+      
+      <!-- 🟢 Current Usage Section -->
+      <section class="current-usage">
         <h2>Current Usage</h2>
         <canvas id="current-usage-donut"></canvas>
+        
+        <!-- 🌈 Color Zones -->
         <div class="color-zones">
           <h4>Color Zones</h4>
           <ul>
@@ -28,47 +33,50 @@
             <li><span class="zone red"></span> 7-10+ kW</li>
           </ul>
         </div>
+        
+        <!-- 💡 Appliances Chart -->
         <div class="appliances">
           <h4>Appliances (kW)</h4>
           <canvas id="appliances-bar"></canvas>
         </div>
-      </div>
+      </section>
 
-      <!-- Past Usage Section -->
-      <div class="past-usage">
+      <!-- 📉 Past Usage Section -->
+      <section class="past-usage">
         <h2>Past Usage</h2>
         <canvas id="past-usage-line"></canvas>
+        
+        <!-- 📆 Daily Consumption Chart -->
         <h3>Daily Energy Consumption (kWh)</h3>
         <canvas id="daily-consumption-bar"></canvas>
+        
+        <!-- 📊 Monthly Comparison Chart -->
         <h3>
-        Current Month (<span id="current-month"></span>) vs Monthly Average (kWh)
+          Current Month (<span id="current-month"></span>) vs Monthly Average (kWh)
         </h3>
         <canvas id="month-vs-average-bar"></canvas>
-      </div>
+      </section>
     </div>
   </div>
 
-  <script 
-    src="/javascripts/analytics.js">
-  </script>
+  <!-- 📜 Scripts Section -->
+  <script src="/javascripts/analytics.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const currentMonthElement = document.getElementById("current-month");
-    
-      // Array of month names
+      
+      // 📆 Month Names Array
       const monthNames = [
         "January", "February", "March", "April", "May", "June", "July", 
         "August", "September", "October", "November", "December"
       ];
-    
-      // Get the current month index (0-11)
+      
+      // 🗓️ Get Current Month Index
       const currentMonthIndex = new Date().getMonth();
-    
-      // Set the current month name in the HTML
+      
+      // 📝 Update Current Month in HTML
       currentMonthElement.textContent = monthNames[currentMonthIndex];
     });
-    
   </script>
 </body>
-
 </html>

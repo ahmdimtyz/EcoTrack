@@ -5,63 +5,166 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
   <link href="/stylesheets/style-insight.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
     <header>
       <h1>{{title}}</h1>
     </header>
-    <div class="content">
-      
 
-      <!-- Graph Section -->
-      <div class="graph">
-        <h3>Predicted Energy Usage for Next 6 Months</h3>
-        <canvas id="predictionChart" width="400" height="200"></canvas>
+    <div class="content">
+      <!-- Daily Usage Chart -->
+      <div>
+        <h3>Daily Usage for the Latest Week</h3>
+        <canvas id="dailyChart"></canvas>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Weekly Usage Chart -->
+      <div>
+        <h3>Weekly Usage for Latest Month</h3>
+        <canvas id="weeklyChart"></canvas>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Monthly Usage Graph -->
+      <div>
+        <h3>Monthly Usage Graph</h3>
+        <canvas id="usageChart"></canvas>
       </div>
 
-      <!-- Recommendations Section -->
-      <div class="recommendations">
-        <h3>Energy-Saving Recommendations</h3>
-        {{#each recommendations}}
-        <div>
-          <h4>Month {{month}}</h4>
-          <p><strong>Air Conditioner:</strong> {{air_conditioner}}</p>
-          <p><strong>Television:</strong> {{television}}</p>
-        </div>
-        {{/each}}
+      <!-- Monthly Average Usage Table -->
+      <div>
+        <h3>Monthly Average Usage</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Average Usage (kWh)</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each monthly_usage}}
+            <tr>
+              <td>Month {{Month}}</td>
+              <td>{{usage}}</td>
+              <td>{{recommendation}}</td>
+            </tr>
+            {{/each}}
+            <tr>
+              <td>Predicted Month {{next_month_prediction.month}}</td>
+              <td>{{next_month_prediction.usage}}</td>
+              <td>{{next_month_prediction.recommendation}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    const months = {{months}};
-    const graphData = {{graphData}};
+    // Monthly Usage Graph
+    const monthlyUsage = {{{json monthly_usage}}};
+    const nextMonthPrediction = {{{json next_month_prediction}}};
 
-    const ctx = document.getElementById('predictionChart').getContext('2d');
+    const monthlyLabels = monthlyUsage.map(data => `Month ${data.Month}`);
+    monthlyLabels.push(`Predicted Month ${nextMonthPrediction.month}`);
+    
+    const usageData = monthlyUsage.map(data => data.usage);
+    usageData.push(nextMonthPrediction.usage);
+
+    const ctx = document.getElementById('usageChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: months.map(month => `Month ${month}`),
+        labels: monthlyLabels,
         datasets: [{
-          label: 'Predicted Usage (kWh)',
-          data: graphData,
+          label: 'Average Usage (kWh)',
+          data: usageData,
           borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 2,
-          fill: false,
-        }]
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 1,
+        }],
       },
       options: {
         responsive: true,
-        plugins: {
-          legend: { display: true, position: 'top' }
-        },
         scales: {
-          x: { title: { display: true, text: 'Month' } },
-          y: { title: { display: true, text: 'Predicted Usage (kWh)' } }
-        }
-      }
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+    // Weekly Usage Graph
+    const weeklyUsage = {{{json weekly_usage}}};
+    const nextWeekPrediction = {{{json next_week_prediction}}};
+
+    const weeklyLabels = weeklyUsage.map(data => `Week ${data.Week}`);
+    weeklyLabels.push(`Predicted Week ${nextWeekPrediction.week}`);
+
+    const weeklyData = weeklyUsage.map(data => data.pw);
+    weeklyData.push(nextWeekPrediction.usage);
+
+    const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
+    new Chart(weeklyCtx, {
+      type: 'bar',
+      data: {
+        labels: weeklyLabels,
+        datasets: [{
+          label: 'Weekly Usage (kWh)',
+          data: weeklyData,
+          borderColor: 'rgba(255, 159, 64, 1)',
+          backgroundColor: weeklyData.map((value, index) =>
+            index === weeklyData.length - 1
+              ? 'rgba(75, 192, 192, 0.5)' // Highlight predicted bar
+              : 'rgba(255, 159, 64, 0.2)'
+          ),
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+    // Daily Usage Graph
+    const dailyUsage = {{{json daily_usage}}};
+
+    const dailyLabels = dailyUsage.map(data => data.Weekday);
+    const dailyData = dailyUsage.map(data => data.pw);
+
+    const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+    new Chart(dailyCtx, {
+      type: 'line',
+      data: {
+        labels: dailyLabels,
+        datasets: [{
+          label: 'Daily Usage (kWh)',
+          data: dailyData,
+          borderColor: 'rgba(153, 102, 255, 1)',
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderWidth: 1,
+          fill: true,
+        }],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
     });
   </script>
 </body>

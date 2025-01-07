@@ -1,58 +1,115 @@
-
-
+/* General Styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
-  margin-left: 130px;
-  background-color: #f8f8f8;
+  padding: 0;
+  background-color: #f9fafb;
   color: #333;
+  line-height: 1.6;
 }
 
-.content {
+
+/* Container */
+.container {
   margin: 20px auto;
-  width: 90%;
-  max-width: 800px;
-  background-color: #eaeaea;
+  margin-left: 200px;
   padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1200px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding-left: 100px; /* Shift content slightly to the right */
 }
 
+/* Header */
 header h1 {
-  font-size: 24px;
   text-align: center;
-  margin-top: 50px;
+  font-size: 2rem;
   margin-bottom: 20px;
+  color: #34495e;
+  font-weight: 700;
 }
 
-h2, h3 {
-  color: #333;
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
-.graph {
+table th {
+  background-color: #ffe9c5; /* Pastel orange */
+  color: #4a4a4a;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+table th, table td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #fef6e4; /* Light pastel yellow */
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+table tbody tr:hover {
+  background-color: #fff3e0; /* Slight pastel hover effect */
+  cursor: default;
+}
+
+table td {
+  font-size: 0.95rem;
+  color: #34495e;
+}
+
+/* Chart */
+canvas {
+  max-width: 100%;
   margin-top: 20px;
 }
 
-canvas {
-  margin: 20px auto;
-}
-
-.recommendations div {
+/* Section Headings */
+h3 {
+  font-size: 1.5rem;
   margin-bottom: 15px;
-  padding: 10px;
-  background-color: #f9fbe7;
-  border-left: 5px solid #c5e1a5;
-  border-radius: 5px;
+  color: #34495e;
+  font-weight: 600;
 }
 
-.recommendations div h4 {
-  margin-bottom: 5px;
-  color: #558b2f;
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  table th, table td {
+    padding: 10px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
 }
 
-.recommendations div p {
-  margin: 5px 0;
-  color: #33691e;
+h3 {
+  margin-top: 30px;
+  text-align: center;
+  color: #333;
 }
 
-
+#dailyChart {
+  margin-top: 20px;
+}

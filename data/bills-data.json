@@ -1,26 +1,25 @@
 {
-    "monthlyBills": [
-      { "label": "January", "totalUsage": 120, "amount": 60 },
-      { "label": "February", "totalUsage": 110, "amount": 55 },
-      { "label": "March", "totalUsage": 130, "amount": 65 },
-      { "label": "April", "totalUsage": 140, "amount": 70 },
-      { "label": "May", "totalUsage": 150, "amount": 75 },
-      { "label": "June", "totalUsage": 160, "amount": 80 },
-      { "label": "July", "totalUsage": 170, "amount": 85 },
-      { "label": "August", "totalUsage": 180, "amount": 90 },
-      { "label": "September", "totalUsage": 190, "amount": 95 },
-      { "label": "October", "totalUsage": 200, "amount": 100 },
-      { "label": "November", "totalUsage": 210, "amount": 105 },
-      { "label": "December", "totalUsage": 80, "amount": 40 }
-    ],
-    "dailyBills": [
-      { "label": "Monday", "totalUsage": 5, "amount": 2.5 },
-      { "label": "Tuesday", "totalUsage": 6, "amount": 3 },
-      { "label": "Wednesday", "totalUsage": 7, "amount": 3.5 },
-      { "label": "Thursday", "totalUsage": 3, "amount": 1.5 },
-      { "label": "Friday", "totalUsage": 0, "amount": 0 },
-      { "label": "Saturday", "totalUsage": 0, "amount": 0 },
-      { "label": "Sunday", "totalUsage": 0, "amount": 0 }
-    ]
-  }
-  
+  "monthlyBills": [
+    { "label": "January", "totalUsage": 120, "amount": 12 },
+    { "label": "February", "totalUsage": 0, "amount": 0 },
+    { "label": "March", "totalUsage": 0, "amount": 0 },
+    { "label": "April", "totalUsage": 0, "amount": 0 },
+    { "label": "May", "totalUsage": 0, "amount": 0 },
+    { "label": "June", "totalUsage": 0, "amount": 0 },
+    { "label": "July", "totalUsage": 0, "amount": 0 },
+    { "label": "August", "totalUsage": 0, "amount": 0 },
+    { "label": "September", "totalUsage": 0, "amount": 0 },
+    { "label": "October", "totalUsage": 0, "amount": 0 },
+    { "label": "November", "totalUsage": 0, "amount": 0 },
+    { "label": "December", "totalUsage": 0, "amount": 0 }
+  ],
+  "dailyBills": [
+    { "label": "Monday", "totalUsage": 5, "amount": 2.5 },
+    { "label": "Tuesday", "totalUsage": 6, "amount": 3 },
+    { "label": "Wednesday", "totalUsage": 7, "amount": 3.5 },
+    { "label": "Thursday", "totalUsage": 0, "amount": 0 },
+    { "label": "Friday", "totalUsage": 0, "amount": 0 },
+    { "label": "Saturday", "totalUsage": 0, "amount": 0 },
+    { "label": "Sunday", "totalUsage": 0, "amount": 0 }
+  ]
+}

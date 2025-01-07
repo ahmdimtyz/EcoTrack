@@ -1,0 +1,21 @@
+{
+    "monthly_usage": [
+        {
+            "Year": 2024,
+            "Month": 12,
+            "pw": 5.773983786666667,
+            "recommendation": "Extremely Low usage. Outstanding efficiency!"
+        },
+        {
+            "Year": 2025,
+            "Month": 1,
+            "pw": 11.317236794759825,
+            "recommendation": "Very Low usage. Excellent efficiency!"
+        }
+    ],
+    "next_month_prediction": {
+        "Month": 2,
+        "pw": 10.81330470311499,
+        "recommendation": "Very Low usage. Excellent efficiency!"
+    }
+}

@@ -18,10 +18,9 @@ var dash = {
 
     this.initRealtimeGauge();
     this.initRealtimeTrendChart();
-    //this.initDailyUsageChart();
-    //this.initMonthlyUsageChart();
-    //this.initUsageLog();
-    
+    this.initDailyUsageChart();
+    this.initMonthlyUsageChart();
+    this.initUsageLog();
     this.initWsConnection();
   },
 
@@ -111,7 +110,7 @@ var dash = {
       data: {
         datasets: [{
           label: "Power (W)",
-          borderColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(109, 117, 123)',
           data: []
         }]
       },
@@ -154,8 +153,8 @@ var dash = {
       data: {
         datasets: [{
           label: "Energy (kWH)",
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(109, 117, 123)',
+          backgroundColor: 'rgb(109, 117, 123)',
           data: []
         }]
       },
@@ -185,8 +184,8 @@ var dash = {
       data: {
         datasets: [{
           label: "Energy (kWH)",
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(109, 117, 123)',
+          backgroundColor: 'rgb(109, 117, 123)',
           data: []
         }]
       },
@@ -216,7 +215,7 @@ var dash = {
       data: {
         datasets: [{
           label: "Power (W)",
-          borderColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(109, 117, 123)',
           data: []
         }]
       },

@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const axios = require('axios');
+const hbs = require('hbs');
 
 // Flask API URL
 const FLASK_API_PREDICT_URL = 'http://127.0.0.1:5000/predict';
@@ -19,6 +20,9 @@ app.use('/api/bills', billsRouter);
 
 const deviceManager = require('./services/device-manager');
 
+hbs.registerHelper('increment', (value) => parseInt(value) + 1);
+hbs.registerHelper('formatFloat', (value) => parseFloat(value).toFixed(2));
+hbs.registerHelper('json', (context) => JSON.stringify(context));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,12 +39,12 @@ app.get('/analytics', (req, res) => {
   res.render('analytics', { title: 'Analytics' });
 });
 
-app.get('/television', (req, res) => {
-  res.render('television', { title: 'Television' });
+app.get('/laptop', (req, res) => {
+  res.render('laptop', { title: 'Laptop' });
 });
 
-app.get('/washing-machine', (req, res) => {
-  res.render('washing-machine', { title: 'Washing Machine' });
+app.get('/phone-charger', (req, res) => {
+  res.render('phone-charger', { title: 'Phone Charger' });
 });
 
 // Define /insights route with Flask API integration
@@ -48,21 +52,43 @@ app.get('/insights', async (req, res) => {
   try {
     const response = await axios.post(FLASK_API_PREDICT_URL);
 
-    if (!response.data || !response.data.predictions) {
+    // Check for all required data
+    if (
+      !response.data.monthly_usage ||
+      !response.data.next_month_prediction ||
+      !response.data.weekly_usage ||
+      !response.data.next_week_prediction ||
+      !response.data.daily_usage
+    ) {
       throw new Error('Invalid response from Flask API');
     }
 
-    const { months, predictions, recommendations } = response.data;
+    const { 
+      monthly_usage, 
+      next_month_prediction, 
+      weekly_usage, 
+      next_week_prediction, 
+      daily_usage 
+    } = response.data;
 
+    // Log for debugging
+    console.log('Monthly Usage:', monthly_usage);
+    console.log('Next Month Prediction:', next_month_prediction);
+    console.log('Weekly Usage:', weekly_usage);
+    console.log('Next Week Prediction:', next_week_prediction);
+    console.log('Daily Usage:', daily_usage);
+
+    // Render insights.hbs with the fetched data
     res.render('insights', {
       title: 'Insights',
-      user: 'User1',
-      months: JSON.stringify(months),
-      graphData: JSON.stringify(predictions),
-      recommendations, // Pass recommendations directly to the frontend
+      monthly_usage,
+      next_month_prediction,
+      weekly_usage,
+      next_week_prediction,
+      daily_usage,
     });
   } catch (error) {
-    console.error('Error fetching insight data:', error.message);
+    console.error('Error fetching insights:', error.message);
     res.status(500).render('error', {
       title: 'Error',
       message: 'Failed to fetch insights.',
